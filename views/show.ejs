@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate') %>
+<body style="font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 0;"></body>
+    <div style="max-width: 600px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 32px;">
+        <img src="<%= listing.image.url %>" alt="<%= listing.title %>" style="width:100%; max-height:320px; object-fit:cover; border-radius: 8px; margin-bottom: 24px;" />
+        <h1 style="margin-top: 0; color: #333; font-size: 2.2em;"><%= listing.title %></h1>
+        <p style="color: #555; font-size: 1.1em; margin-bottom: 16px;"><%= listing.description %></p>
+        <div style="margin-bottom: 18px;">
+            <span style="font-weight: bold; color: #007bff;">Price:</span>
+            <span style="color: #222;">₹<%= listing.price.toLocaleString("en-IN") %></span>
+        </div>
+        <div style="margin-bottom: 8px;">
+            <span style="font-weight: bold; color: #007bff;">Location:</span>
+            <span style="color: #222;"><%= listing.location %></span>
+        </div>
+        <div style="margin-bottom: 24px;">
+            <span style="font-weight: bold; color: #007bff;">Country:</span>
+            <span style="color: #222;"><%= listing.country %></span>
+        </div>
+        <div style="display: flex; gap: 12px;">
+            <a href="/listings/<%= listing._id %>/edit" style="background: #007bff; color: #fff; padding: 10px 22px; border-radius: 5px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Edit Listing</a>
+            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" style="margin: 0;">
+                <button type="submit" style="background: #dc3545; color: #fff; padding: 10px 22px; border: none; border-radius: 5px; font-weight: 500; cursor: pointer; transition: background 0.2s;">Delete Listing</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

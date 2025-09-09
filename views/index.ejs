@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>Welcome to AirBNB</h1>
+<h2>Listings</h2>
+<div class="row row-col-lg-3 row-col-md-2 row-col-sm-1 mt-4">
+    <% listings.forEach(listing => { %>
+        <div class="card">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>" />
+            <a href="/listings/<%= listing._id %>"><h3><%= listing.title %></h3></a>
+            <p><%= listing.description %></p>
+            <p>Price: ₹<%= listing.price %></p>
+            <p>Location: <%= listing.location %></p>
+            
+        </div>
+    <% }); %>
+</div>
