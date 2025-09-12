@@ -1,50 +1,63 @@
 <% layout('layouts/boilerplate') %>
-<body>
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 col-md-9">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
-                        <h2 class="mb-4 text-center text-danger">Edit Your Listing</h2>
-                        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Title</label>
-                                <input id="title" name="listing[title]" value="<%= listing.title %>" type="text" required class="form-control" />
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="mb-4 text-center text-danger">Edit Your Listing</h2>
+                    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" 
+                            class="needs-validation" novalidate>
+                        
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input id="title" name="listing[title]" value="<%= listing.title %>" 
+                                    type="text" required class="form-control" />
+                            <div class="invalid-feedback">Please enter a title.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea id="description" name="listing[description]" required 
+                                        class="form-control" rows="3"><%= listing.description %></textarea>
+                            <div class="invalid-feedback">Please enter a description.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imageUrl" class="form-label">Image URL</label>
+                            <input id="imageUrl" name="listing[image.url]" value="<%= listing.image.url %>" 
+                                    type="url" required class="form-control" />
+                            <div class="invalid-feedback">Please provide a valid image URL.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input id="price" name="listing[price]" value="<%= listing.price %>" 
+                                    type="number" min="0" step="0.01" required class="form-control" />
+                            <div class="invalid-feedback">Please enter a valid price (0 or higher).</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="country" class="form-label">Country</label>
+                                <input id="country" name="listing[country]" value="<%= listing.country %>" 
+                                        type="text" required class="form-control" />
+                                <div class="invalid-feedback">Please enter a country.</div>
                             </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea id="description" name="listing[description]" required class="form-control" rows="3"><%= listing.description %></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="imageUrl" class="form-label">Image URL</label>
-                                <input id="imageUrl" name="listing[image.url]" value="<%= listing.image.url %>" type="text" required class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input id="price" name="listing[price]" value="<%= listing.price %>" type="number" min="0" step="0.01" required class="form-control" />
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-6">
-                                    <label for="country" class="form-label">Country</label>
-                                    <input id="country" name="listing[country]" value="<%= listing.country %>" type="text" required class="form-control" />
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="city" class="form-label">City</label>
-                                    <input id="city" name="listing[city]" value="<%= listing.city %>" type="text" required class="form-control" />
-                                </div>
-                            </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-md-6">
                                 <label for="location" class="form-label">Location</label>
-                                <input id="location" name="listing[location]" value="<%= listing.location %>" type="text" required class="form-control" />
+                                <input id="location" name="listing[location]" value="<%= listing.location %>" 
+                                        type="text" required class="form-control" />
+                                <div class="invalid-feedback">Please enter a location.</div>
                             </div>
-                            <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-danger btn-lg">Save Changes</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-danger btn-lg">Save Changes</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+
